@@ -1,0 +1,41 @@
+
+
+
+
+
+ <div ng-controller='ordersController'>
+ <h3>Add a new Order!</h3>
+    <form>
+    Name: 
+    <select ng-model ="newOrder.name">                                
+            <option ng-repeat="customer in customers" value="{{customer._id}}">     
+                {{customer.name}}
+            </option>
+    </select>
+   	
+    Product: 
+    <select ng-model ="newOrder.product">                                
+            <option ng-repeat="product in products" value="{{product._id}}">     
+                {{product.name}}
+            </option>
+    </select>
+    Quantity:
+    <select ng-model ="newOrder.qty">
+        <option ng-repeat="n in range(1,1000)" value="{{n}}">{{n}}</option>
+    </select>
+    
+
+    <input  ng-click='addOrder()' type='submit' value='add new Order'>
+    </form>
+         Search Order: <input type="text" ng-model="filter_name">
+    
+    <ul ng-repeat="order in orderCusts | filter: filter_name">
+    <li>{{ order.customer_id.name }}, {{ order.product_id.name }}, {{ order.qty }} </li>
+    </ul>   
+
+   
+    
+
+    </div>
+
+ 

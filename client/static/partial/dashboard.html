@@ -1,0 +1,56 @@
+
+
+
+         Search : <input type="text" ng-model="filter_name">
+ <h3>Product!</h3>
+ <div ng-controller='productController'>
+
+  
+
+    <div ng-init="limit=2">
+        <div ng-repeat="product in products | filter: filter_name | limitTo: limit as results">
+            <div><img ng-src="{{ product.image }}" height="100" width="100">
+                <div>Name: {{ product.name }} {{product.image1}}</div>
+                <div>Quantity: {{ product.qty }}(Left)</div>
+            </div>
+        </div>   
+        <button ng-hide="results.length === product.length" 
+        ng-click="limit = limit + 1">show more...</button>
+    </div>    
+    </div>
+
+ 
+
+
+
+
+
+<h3>Recent Order!</h3>
+ <div ng-controller='ordersController'>
+ <div ng-init="limit=2">
+    
+    <ul ng-repeat="order in orderCusts |  limitTo: limit as results">
+    <li>{{ order.customer_id.name }}, {{ order.product_id.name }}, {{ order.qty }} </li>
+    </ul>   
+
+    </div>
+     <button ng-hide="results.length === order.length" 
+        ng-click="limit = limit + 1">show more...</button>
+
+ </div>
+
+<h3>Customer!</h3>
+<div ng-controller='customersController'>
+ <div ng-init="limit=2">
+    <ul ng-repeat="customer in customers | filter: filter_name |  limitTo: limit as results">
+   <li><span ng-bind ="customer.name"></span> , <span ng-bind ="customer.created_at"></span>   </li>
+    </ul>   
+
+<button ng-hide="results.length === customer.length" 
+        ng-click="limit = limit + 1">show more...</button>
+   </div>
+    
+
+    </div>
+
+ 
